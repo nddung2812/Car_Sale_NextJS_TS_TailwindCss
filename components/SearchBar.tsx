@@ -6,7 +6,11 @@ const SearchBar = () => {
         console.log('test search')
     }
   return (
-    <form className='searchbar' onSubmit={handleSearch}>SearchBar</form>
+    <form className='searchbar' onSubmit={handleSearch}>
+        <div className="searchbar__item">
+            
+        </div>
+    </form>
   )
 }
 
