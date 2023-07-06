@@ -14,7 +14,7 @@ const Navbar = () => {
             alt="Car Hub"
             width={118}
             height={18}
-            className="ojbect-contain"
+            className="object-contain"
           />
         </Link>
 
