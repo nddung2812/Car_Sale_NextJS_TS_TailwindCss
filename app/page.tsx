@@ -1,5 +1,5 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from "@/components";
-import { fetchCars } from "@/utils";
+// import { fetchCars } from "@/utils";
 import Image from 'next/image'
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
           </div>
         </div>
 
-        {!isDataEmpty ? (
+        {/* {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
               {allCars?.map((car) =>
@@ -35,7 +35,7 @@ export default function Home() {
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
             <p>{allCars?.message}</p>
           </div>
-        )}
+        )} */}
       </div>
     </main>
   )
