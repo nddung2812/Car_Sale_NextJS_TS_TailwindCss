@@ -1,25 +1,8 @@
-import { Hero, SearchBar, CustomFilter } from "@/components";
+import { Hero, SearchBar, CustomFilter, CarCard } from "@/components";
+import { fetchCars } from "@/utils";
 import Image from 'next/image'
 
-
-export async function getPosts() {
-  try {
-    const res = await fetch("https://bgwgroup.com.au/sammymas2023/get-prize-list-json.php");
-    
-    if (!res.ok) {
-      throw new Error("Failed to fetch!");
-    }
-    
-    const result = await res.json();
-    return result;
-  } catch (err) {
-    console.log("Failed to fetch!", err);
-    throw err; // Re-throw the error to propagate it to the caller
-  }
-}
-
-export default async function Home() {
-  const allCars = await getPosts();
+export default function Home() {
   return (
     <main className="overlow-hidden">
       <Hero />
@@ -38,6 +21,21 @@ export default async function Home() {
             <CustomFilter title="year" /> */}
           </div>
         </div>
+
+        {!isDataEmpty ? (
+          <section>
+            <div className="home__cars-wrapper">
+              {allCars?.map((car) =>
+                <CarCard car={car} />
+              )}
+            </div>
+          </section>
+        ) : (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+            <p>{allCars?.message}</p>
+          </div>
+        )}
       </div>
     </main>
   )
