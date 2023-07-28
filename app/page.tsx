@@ -1,7 +1,25 @@
 import { Hero, SearchBar, CustomFilter } from "@/components";
 import Image from 'next/image'
 
-export default function Home() {
+
+export async function getPosts() {
+  try {
+    const res = await fetch("https://bgwgroup.com.au/sammymas2023/get-prize-list-json.php");
+    
+    if (!res.ok) {
+      throw new Error("Failed to fetch!");
+    }
+    
+    const result = await res.json();
+    return result;
+  } catch (err) {
+    console.log("Failed to fetch!", err);
+    throw err; // Re-throw the error to propagate it to the caller
+  }
+}
+
+export default async function Home() {
+  const allCars = await getPosts();
   return (
     <main className="overlow-hidden">
       <Hero />
@@ -16,8 +34,8 @@ export default function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            {/* <CustomFilter title="fuel" />
+            <CustomFilter title="year" /> */}
           </div>
         </div>
       </div>

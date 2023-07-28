@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Discover the best cars in the world',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
