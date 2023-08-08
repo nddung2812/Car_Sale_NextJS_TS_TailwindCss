@@ -1,4 +1,4 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
@@ -41,8 +41,8 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 //   return newPathname;
 // };
 
-export async function fetchCars() {
-//   const { manufacturer, year, model, limit, fuel } = filters;
+export async function fetchCars(filters: FilterProps) {
+  const { manufacturer, year, model, limit, fuel } = filters;
 
   // Set the required headers for the API request
   const headers = {
@@ -50,7 +50,7 @@ export async function fetchCars() {
     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
   }
 
-  const url = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=subaru';
+  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
   const response = await fetch(
     url,
     {
