@@ -50,7 +50,7 @@ export async function fetchCars() {
     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
   }
 
-  const url = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=suzuki';
+  const url = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=subaru';
   const response = await fetch(
     url,
     {
