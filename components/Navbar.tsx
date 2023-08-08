@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import CustomButton from "./CustomButton";
-import { MouseEvent } from "react";
 
 const Navbar = () => {
   return (
